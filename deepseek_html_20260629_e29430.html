@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RyanShaw Secure Solutions | CCTV, Access Control & Network Installation — Nairobi, Kenya</title>
+  <meta name="description" content="RyanShaw Secure Solutions installs and monitors CCTV, biometric access control, structured cabling, PBX, WiFi networking and server infrastructure for homes, offices and industrial sites in Nairobi, Kenya." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1220;
+      --panel: #121B2E;
+      --panel-2: #172338;
+      --line: rgba(231,236,243,0.10);
+      --line-strong: rgba(231,236,243,0.18);
+      --text: #E7ECF3;
+      --text-dim: #9AA7BD;
+      --text-faint: #6B7890;
+      --accent: #E8A33D;
+      --accent-soft: rgba(232,163,61,0.14);
+      --online: #3FD0C9;
+      --rec: #FF5A5A;
+      --radius: 2px;
+      --maxw: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: #FFFFFF;
+    }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 0; }
+    @media (max-width:720px) { section { padding: 64px 0; } }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Status bar */
+    .statusbar {
+      background: #080D17;
+      border-bottom: 1px solid var(--line);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-faint);
+    }
+    .statusbar .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--online);
+      display: inline-block;
+      margin-right: 8px;
+      box-shadow: 0 0 6px var(--online);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+    .statusbar .right { display: flex; gap: 18px; }
+    @media (max-width:600px) { .statusbar .right span:nth-child(2) { display: none; } }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11,18,32,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 18px; padding-bottom: 18px;
+    }
+    .logo .name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .logo .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      margin-top: 2px;
+    }
+    .navlinks { display: flex; align-items: center; gap: 32px; }
+    .navlinks a {
+      font-size: 14px;
+      color: var(--text-dim);
+      font-weight: 500;
+      transition: color .15s ease;
+    }
+    .navlinks a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .phone-badge {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 20px; font-size: 14px; font-weight: 600;
+      border-radius: var(--radius); border: 1px solid transparent;
+      cursor: pointer; transition: all .15s ease; white-space: nowrap;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .btn-primary { background: var(--accent); color: #1A1306; }
+    .btn-primary:hover { background: #f3b358; }
+    .btn-ghost { border-color: var(--line-strong); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line-strong);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    @media (max-width:880px) {
+      .navlinks { display: none; }
+      .phone-badge { display: none; }
+      .menu-toggle { display: inline-flex; }
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+      color: var(--text-dim);
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* Hero */
+    .hero { padding: 100px 0 80px; position: relative; overflow: hidden; }
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width:980px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0 56px; }
+    }
+    .hero h1 { font-size: 46px; line-height: 1.08; margin-bottom: 22px; }
+    @media (max-width:600px) { .hero h1 { font-size: 32px; } }
+    .hero p.lead { color: var(--text-dim); font-size: 17px; max-width: 480px; margin-bottom: 32px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .mesh-bg {
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 70%;
+      height: 140%;
+      background: radial-gradient(circle at 70% 50%, rgba(232, 163, 61, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero .wrap > * { position: relative; z-index: 1; }
+
+    /* Frame */
+    .frame { position: relative; }
+    .frame .corner {
+      position: absolute;
+      width: 20px; height: 20px;
+      pointer-events: none;
+    }
+    .frame .corner.tl { top: -1px; left: -1px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
+    .frame .corner.tr { top: -1px; right: -1px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+    .frame .corner.bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--accent); border-left: 2px solid var(--accent); }
+    .frame .corner.br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+
+    /* Monitoring wall */
+    .wall {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+    .wall-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+    }
+    .wall-head .rec { color: var(--rec); display: flex; align-items: center; gap: 6px; }
+    .rec-dot { width:6px; height:6px; border-radius:50%; background:var(--rec); animation:pulse 1.4s ease-in-out infinite; }
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tile {
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
+      background: linear-gradient(135deg, #1b2740 0%, #0e1524 60%, #1b2740 100%);
+      border: 1px solid var(--line);
+    }
+    .tile::after {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+    }
+    .tile .label {
+      position: absolute; top: 6px; left: 7px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9.5px;
+      color: rgba(231,236,243,0.85);
+      letter-spacing: 0.04em;
+    }
+    .tile .liv {
+      position: absolute; top: 6px; right: 7px;
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      color: var(--rec);
+    }
+    .tile .liv .d { width:5px; height:5px; border-radius:50%; background:var(--rec); }
+
+    /* Trust strip */
+    .strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .strip .wrap {
+      display: flex; gap: 34px; flex-wrap: wrap; justify-content: center;
+      padding-top: 24px; padding-bottom: 24px;
+    }
+    .strip span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+    }
+
+    /* Section heads */
+    .sec-head { max-width: 620px; margin-bottom: 52px; }
+    .sec-head h2 { font-size: 32px; margin-bottom: 14px; }
+    .sec-head p { color: var(--text-dim); font-size: 16px; }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    @media (max-width:880px) { .services-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:600px) { .services-grid { grid-template-columns: 1fr; } }
+    .service {
+      background: var(--panel);
+      padding: 32px 28px;
+      position: relative;
+      transition: background .15s ease;
+    }
+    .service:hover { background: var(--panel-2); }
+    .service .icon { width: 34px; height: 34px; color: var(--accent); margin-bottom: 20px; }
+    .service h3 { font-size: 17px; margin-bottom: 10px; }
+    .service p { color: var(--text-dim); font-size: 14.5px; margin: 0; }
+    .service .idx {
+      position: absolute; top: 28px; right: 28px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    /* Plans */
+    .plans { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .plans-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    @media (max-width:880px) { .plans-grid { grid-template-columns: 1fr; } }
+    .plan {
+      border: 1px solid var(--line);
+      padding: 30px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+    .plan.featured { border-color: var(--accent); position: relative; }
+    .plan.featured::before {
+      content: 'MOST REQUESTED';
+      position: absolute; top: -11px; left: 30px;
+      background: var(--accent);
+      color: #1A1306;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+    }
+    .plan .tier-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .plan h3 { font-size: 21px; margin-bottom: 14px; }
+    .plan ul { list-style: none; margin: 0 0 28px; padding: 0; flex-grow: 1; }
+    .plan li {
+      font-size: 14px;
+      color: var(--text-dim);
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+    }
+    .plan li:first-child { border-top: none; }
+    .plan li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    @media (max-width:880px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } }
+    .about-grid p { color: var(--text-dim); font-size: 16px; margin-bottom: 18px; }
+    .quote-line {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      border-left: 2px solid var(--accent);
+      padding-left: 18px;
+      margin: 28px 0;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 0; }
+    .why-item { display: flex; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .why-item:first-child { border-top: none; }
+    .why-item .n {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--accent);
+      font-size: 13px;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .why-item h4 { font-size: 15px; margin-bottom: 4px; }
+    .why-item p { margin: 0; font-size: 14px; color: var(--text-dim); }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .team-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .team-card .avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--panel-2);
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+    }
+    .team-card h4 { font-size: 17px; margin-bottom: 2px; }
+    .team-card .role {
+      font-size: 12px;
+      color: var(--accent);
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+    .team-card p { font-size: 13px; color: var(--text-dim); margin-top: 12px; }
+
+    /* Testimonial */
+    .testimonial { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .testimonial .wrap { max-width: 760px; text-align: center; }
+    .testimonial blockquote {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      line-height: 1.5;
+      color: #fff;
+      margin: 0 0 24px;
+      font-weight: 500;
+    }
+    .testimonial cite {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .testimonial cite b { color: var(--accent); }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
+    @media (max-width:880px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .contact-card { border: 1px solid var(--line); padding: 26px; margin-bottom: 14px; }
+    .contact-card .k {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .contact-card .v { font-size: 18px; color: #fff; font-weight: 500; }
+    .contact-card a.v:hover { color: var(--accent); }
+
+    .map-container {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      filter: grayscale(0.8) invert(0.92) hue-rotate(180deg);
+    }
+    .map-container iframe {
+      display: block;
+      width: 100%;
+      height: 200px;
+      border: 0;
+    }
+
+    form .field { margin-bottom: 18px; }
+    form label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 7px; }
+    form input, form textarea {
+      width: 100%;
+      background: var(--panel);
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      padding: 13px 14px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      border-radius: var(--radius);
+    }
+    form input:focus, form textarea:focus { border-color: var(--accent); outline: none; }
+    form textarea { resize: vertical; min-height: 110px; }
+    .hidden { position: absolute; left: -9999px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 48px 0 28px; }
+    .foot-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .foot-col h5 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .foot-col a, .foot-col p {
+      display: block;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 9px;
+    }
+    .foot-col a:hover { color: var(--accent); }
+    .foot-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .foot-bottom p { font-size: 12px; color: var(--text-faint); margin: 0; }
+
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Status Bar -->
+  <div class="statusbar">
+    <div class="wrap">
+      <span><span class="dot"></span>SYSTEM STATUS: ONLINE</span>
+      <span class="right">
+        <span>NAIROBI, KENYA</span>
+        <span>SUPPORT: +254 727 155 572</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="wrap">
+      <a href="#top" class="logo">
+        <span class="name">RYANSHAW</span>
+        <span class="tag">SECURE SOLUTIONS</span>
+      </a>
+      <div class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#plans">Monitoring Plans</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <span class="phone-badge mono">📞 +254 727 155 572</span>
+        <a href="#contact" class="btn btn-primary">Request a Site Visit</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#plans">Monitoring Plans</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="mesh-bg"></div>
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Nairobi · Installation &amp; Monitoring</span>
+          <h1>Reliable security and connectivity, installed right the first time.</h1>
+          <p class="lead">RyanShaw Secure Solutions delivers cutting‑edge installation services that enhance security, communication, and connectivity for residential, commercial, and industrial clients across Nairobi.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">Request a Site Visit</a>
+            <a href="#services" class="btn btn-ghost">See Our Services</a>
+          </div>
+        </div>
+        <div class="frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <div class="wall">
+            <div class="wall-head">
+              <span>MONITORING WALL — LIVE</span>
+              <span class="rec"><span class="rec-dot"></span>4 FEEDS</span>
+            </div>
+            <div class="tiles">
+              <div class="tile"><span class="label">CAM 01 — ENTRANCE</span><span class="liv"><span class="d"></span>LIVE</span></div>
+              <div class="tile"><span class="label">CAM 02 — STOCKROOM</span><span class="liv"><span class="d"></span>LIVE</span></div>
+              <div class="tile"><span class="label">CAM 03 — PERIMETER</span><span class="liv"><span class="d"></span>LIVE</span></div>
+              <div class="tile"><span class="label">CAM 04 — SERVER RM</span><span class="liv"><span class="d"></span>LIVE</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="strip">
+      <div class="wrap">
+        <span>CCTV &amp; IP CAMERAS</span>
+        <span>BIOMETRIC ACCESS CONTROL</span>
+        <span>STRUCTURED CABLING</span>
+        <span>PBX &amp; PHONE SYSTEMS</span>
+        <span>WIFI &amp; NETWORKING</span>
+        <span>SERVER &amp; RACK SETUP</span>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">What We Install</span>
+          <h2>One team for security and connectivity</h2>
+          <p>We handle the site survey, the installation, and the support afterward — so you're not juggling three different contractors for one building.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service reveal">
+            <span class="idx">01</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="14" height="10" rx="1.5"/><path d="M16 10l5-2.5v9L16 14"/><circle cx="9" cy="12" r="2.4"/></svg>
+            <h3>CCTV &amp; IP Camera Systems</h3>
+            <p>HD and IP cameras with night vision, motion alerts, and remote viewing from your phone or computer.</p>
+          </div>
+
+          <div class="service reveal">
+            <span class="idx">02</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c4-2.5 6-6 6-10a6 6 0 1 0-12 0c0 4 2 7.5 6 10z"/><path d="M9 11a3 3 0 1 1 6 0c0 1.6-1 2.6-3 4.5"/><path d="M12 13.5v2.2"/></svg>
+            <h3>Biometric &amp; Access Control</h3>
+            <p>Fingerprint and card‑based entry systems that log who comes and goes, without a guard at every door.</p>
+          </div>
+
+          <div class="service reveal">
+            <span class="idx">03</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12c3-4 6 4 9 0s6 4 9 0"/><circle cx="3" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+            <h3>Structured Cabling &amp; Fibre</h3>
+            <p>Clean, labeled data cabling and fibre runs built to support your network for years, not months.</p>
+          </div>
+
+          <div class="service reveal">
+            <span class="idx">04</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 7h4"/><path d="M9 17h6"/></svg>
+            <h3>PBX &amp; Phone Systems</h3>
+            <p>Office phone systems that route calls between desks, departments, and branches.</p>
+          </div>
+
+          <div class="service reveal">
+            <span class="idx">05</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9a12 12 0 0 1 16 0"/><path d="M7 12.5a8 8 0 0 1 10 0"/><path d="M10 16a4 4 0 0 1 4 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <h3>WiFi &amp; Networking</h3>
+            <p>Reliable coverage across your premises, configured for the number of people actually using it.</p>
+          </div>
+
+          <div class="service reveal">
+            <span class="idx">06</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="6" rx="1"/><rect x="5" y="10" width="14" height="6" rx="1"/><rect x="5" y="17" width="14" height="4" rx="1"/><circle cx="8" cy="6" r="0.6" fill="currentColor" stroke="none"/><circle cx="8" cy="13" r="0.6" fill="currentColor" stroke="none"/></svg>
+            <h3>Server &amp; Rack Infrastructure</h3>
+            <p>Organized server rooms and racks that are easy to maintain and safe to work in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="plans" id="plans">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Beyond Installation</span>
+          <h2>Ongoing monitoring, not just a one‑time install</h2>
+          <p>Most installers hand over the keys and leave. We offer plans that keep watching after the cameras go up.</p>
+        </div>
+
+        <div class="plans-grid">
+          <div class="plan reveal">
+            <span class="tier-label">TIER 01</span>
+            <h3>Install Only</h3>
+            <ul>
+              <li>Site survey and system design</li>
+              <li>Full installation and setup</li>
+              <li>Equipment warranty support</li>
+              <li>Handover training for your team</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost">Request a Quote</a>
+          </div>
+
+          <div class="plan featured reveal">
+            <span class="tier-label">TIER 02</span>
+            <h3>Monitored</h3>
+            <ul>
+              <li>Everything in Install Only</li>
+              <li>Remote monitoring dashboard</li>
+              <li>Motion &amp; intrusion alerts to your phone</li>
+              <li>Scheduled maintenance visits</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Request a Quote</a>
+          </div>
+
+          <div class="plan reveal">
+            <span class="tier-label">TIER 03</span>
+            <h3>Monitored + Secured</h3>
+            <ul>
+              <li>Everything in Monitored</li>
+              <li>Firewall &amp; network hardening</li>
+              <li>Automated data backups</li>
+              <li>Staff phishing‑awareness briefing</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + TEAM -->
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <span class="eyebrow">About Us</span>
+          <h2 style="font-size:30px; margin-bottom:18px;">Where technology meets peace of mind — one installation at a time.</h2>
+          <p>RyanShaw Secure Solutions installs and maintains security, communication, and network systems for residential, commercial, and industrial clients across Nairobi and beyond.</p>
+          <p>Whether you're securing a single office or wiring an entire building, our team designs the system around your space first — then installs it with the same care whether it's four cameras or forty.</p>
+          <p class="quote-line">"We don't just install technology — we build trust through security and seamless connectivity."</p>
+          <p><strong>We secure your world and connect your systems — all with expert care and cutting‑edge tools.</strong></p>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Why Clients Choose Us</span>
+          <div class="why-list">
+            <div class="why-item">
+              <span class="n mono">01</span>
+              <div><h4>One team, full stack</h4><p>Security, cabling, and networking handled together — not split between three contractors who blame each other.</p></div>
+            </div>
+            <div class="why-item">
+              <span class="n mono">02</span>
+              <div><h4>Site survey before every quote</h4><p>We look at your space in person before we price the job, so the quote matches the reality.</p></div>
+            </div>
+            <div class="why-item">
+              <span class="n mono">03</span>
+              <div><h4>Support after handover</h4><p>Maintenance contracts available so your system keeps working long after installation day.</p></div>
+            </div>
+            <div class="why-item">
+              <span class="n mono">04</span>
+              <div><h4>Based in Nairobi</h4><p>Local call‑outs and faster response when something needs a technician on site.</p></div>
+            </div>
+          </div>
+
+          <!-- Team Section -->
+          <div style="margin-top: 40px; border-top: 1px solid var(--line); padding-top: 32px;">
+            <span class="eyebrow">Meet the Team</span>
+            <div class="team-grid">
+              <div class="team-card">
+                <div class="avatar">CK</div>
+                <h4>Catherine Kaweso</h4>
+                <div class="role">Director</div>
+                <p>Over 10 years of experience in security systems integration and network infrastructure. Managing Director of Rikel Technologies.</p>
+              </div>
+              <div class="team-card">
+                <div class="avatar">MK</div>
+                <h4>Moses Kyalo Maingi</h4>
+                <div class="role">Lead ICT Technician</div>
+                <p>10+ years in structured cabling, CCTV, access control, and WiFi deployment. Certified in Ubiquiti NanoStation and biometric systems.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+      <div class="wrap">
+        <span class="eyebrow" style="justify-content:center;">Client Feedback</span>
+        <blockquote class="reveal">"Exceeded my expectations. Their team installed a complete CCTV and biometric access control system at our office with great professionalism. The technicians were knowledgeable, efficient, and left everything neat and working perfectly. Our security has never been better."</blockquote>
+        <cite>— <b>Allan Ngoya</b>, CEO of TLS</cite>
+      </div>
+    </section>
+
+    <!-- CONTACT + MAP -->
+    <section id="contact">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <span class="eyebrow">Get In Touch</span>
+          <h2 style="font-size:30px; margin-bottom:24px;">Request a site visit</h2>
+          <p style="color:var(--text-dim); margin-bottom:30px;">Tell us about your space and we'll arrange a free survey before quoting.</p>
+
+          <div class="contact-card">
+            <span class="k mono">PHONE</span>
+            <a class="v" href="tel:+254727155572">+254 727 155 572</a>
+          </div>
+          <div class="contact-card">
+            <span class="k mono">EMAIL</span>
+            <a class="v" href="mailto:ryanshaw88@gmail.com">ryanshaw88@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <span class="k mono">LOCATION</span>
+            <span class="v">Nairobi, Kenya</span>
+          </div>
+
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853743783!2d36.68219672217759!3d-1.3028611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2s!4v1743512345678"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map of Nairobi, Kenya"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" />
+            </div>
+            <div class="field">
+              <label for="message">What do you need installed?</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <h5>RYANSHAW SECURE SOLUTIONS</h5>
+          <p style="max-width:260px;">Security, communication, and network installations for homes, offices, and industrial sites in Nairobi.</p>
+        </div>
+        <div class="foot-col">
+          <h5>NAVIGATE</h5>
+          <a href="#services">Services</a>
+          <a href="#plans">Monitoring Plans</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h5>CONTACT</h5>
+          <a href="tel:+254727155572">+254 727 155 572</a>
+          <a href="mailto:ryanshaw88@gmail.com">ryanshaw88@gmail.com</a>
+          <p>Nairobi, Kenya</p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© 2026 RyanShaw Secure Solutions. All rights reserved.</p>
+        <p>Built with care, one installation at a time.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', false);
+    }));
+
+    // Scroll reveal
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+</html>
