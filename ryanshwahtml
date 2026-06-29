@@ -391,7 +391,7 @@
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-right">
-        <span class="phone-badge mono">📞 0754 035 179</span>
+        <span class="phone-badge mono">📞 +254 727 155 572</span>
         <a href="#contact" class="btn btn-primary">Request a Site Visit</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
@@ -593,7 +593,7 @@
             <div class="team-grid">
               <div class="team-card">
                 <div class="avatar">RS</div>
-                <h4>Dan Ryanshaw</h4>
+                <h4>Catherine Kaweso</h4>
                 <div class="role">Director</div>
                 <p>Over 10 years of experience in security systems integration and network infrastructure.</p>
               </div>
@@ -701,7 +701,7 @@
         </div>
         <div class="foot-col">
           <h5>CONTACT</h5>
-          <a href="tel:+254754035179">0754 035 179</a>
+          <a href="tel:+254727155572">0727 155 572</a>
           <a href="mailto:ryanshaw88@gmail.com">ryanshaw88@gmail.com</a>
           <p>Nairobi, Kenya</p>
         </div>
