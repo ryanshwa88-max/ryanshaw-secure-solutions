@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -219,49 +220,29 @@
     .frame .corner.bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--accent); border-left: 2px solid var(--accent); }
     .frame .corner.br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
 
-    /* Monitoring wall */
+    /* Monitoring wall - now with a real image */
     .wall {
       background: var(--panel);
       border: 1px solid var(--line);
-      padding: 18px;
+      padding: 0;
+      overflow: hidden;
     }
-    .wall-head {
+    .wall img {
+      width: 100%;
+      height: auto;
+      display: block;
+      min-height: 200px;
+      object-fit: cover;
+    }
+    .wall .footer {
+      padding: 12px 18px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--text-faint);
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      color: var(--text-faint);
-      margin-bottom: 14px;
-      letter-spacing: 0.08em;
+      border-top: 1px solid var(--line);
     }
-    .wall-head .rec { color: var(--rec); display: flex; align-items: center; gap: 6px; }
-    .rec-dot { width:6px; height:6px; border-radius:50%; background:var(--rec); animation:pulse 1.4s ease-in-out infinite; }
-    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .tile {
-      position: relative; aspect-ratio: 4/3; overflow: hidden;
-      background: linear-gradient(135deg, #1b2740 0%, #0e1524 60%, #1b2740 100%);
-      border: 1px solid var(--line);
-    }
-    .tile::after {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
-    }
-    .tile .label {
-      position: absolute; top: 6px; left: 7px;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 9.5px;
-      color: rgba(231,236,243,0.85);
-      letter-spacing: 0.04em;
-    }
-    .tile .liv {
-      position: absolute; top: 6px; right: 7px;
-      display: flex; align-items: center; gap: 4px;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 9px;
-      color: var(--rec);
-    }
-    .tile .liv .d { width:5px; height:5px; border-radius:50%; background:var(--rec); }
 
     /* Trust strip */
     .strip {
@@ -405,6 +386,14 @@
       color: var(--accent);
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 600;
+      overflow: hidden;
+      padding: 0;
+    }
+    .team-card .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .team-card h4 { font-size: 17px; margin-bottom: 2px; }
     .team-card .role {
@@ -432,6 +421,63 @@
       color: var(--text-dim);
     }
     .testimonial cite b { color: var(--accent); }
+
+    /* Instagram Feed - NEW */
+    .instagram-feed {
+      padding: 60px 0 80px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+    .instagram-feed .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .instagram-feed .grid-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      aspect-ratio: 1 / 1;
+      position: relative;
+    }
+    .instagram-feed .grid-item:hover {
+      transform: scale(1.02);
+      border-color: var(--accent);
+    }
+    .instagram-feed .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .instagram-feed .grid-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11,18,32,0.8);
+      padding: 8px 12px;
+      font-size: 12px;
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(2px);
+      border-top: 1px solid var(--accent-soft);
+    }
+    .instagram-feed .follow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .instagram-feed .follow-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--accent);
+    }
 
     /* Contact */
     .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
@@ -539,6 +585,7 @@
         <a href="#services">Services</a>
         <a href="#plans">Monitoring Plans</a>
         <a href="#about">About</a>
+        <a href="#instagram">Instagram</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-right">
@@ -551,6 +598,7 @@
       <a href="#services">Services</a>
       <a href="#plans">Monitoring Plans</a>
       <a href="#about">About</a>
+      <a href="#instagram">Instagram</a>
       <a href="#contact">Contact</a>
     </div>
   </header>
@@ -573,15 +621,10 @@
         <div class="frame reveal">
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
           <div class="wall">
-            <div class="wall-head">
-              <span>MONITORING WALL — LIVE</span>
-              <span class="rec"><span class="rec-dot"></span>4 FEEDS</span>
-            </div>
-            <div class="tiles">
-              <div class="tile"><span class="label">CAM 01 — ENTRANCE</span><span class="liv"><span class="d"></span>LIVE</span></div>
-              <div class="tile"><span class="label">CAM 02 — STOCKROOM</span><span class="liv"><span class="d"></span>LIVE</span></div>
-              <div class="tile"><span class="label">CAM 03 — PERIMETER</span><span class="liv"><span class="d"></span>LIVE</span></div>
-              <div class="tile"><span class="label">CAM 04 — SERVER RM</span><span class="liv"><span class="d"></span>LIVE</span></div>
+            <img src="images/control-room.jpg" alt="RyanShaw CCTV monitoring setup in Nairobi">
+            <div class="footer">
+              <span>📸 REAL INSTALLATION — NAIROBI OFFICE</span>
+              <span style="color: var(--online);">● 4K UHD</span>
             </div>
           </div>
         </div>
@@ -651,6 +694,56 @@
             <h3>Server &amp; Rack Infrastructure</h3>
             <p>Organized server rooms and racks that are easy to maintain and safe to work in.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM FEED (NEW) -->
+    <section class="instagram-feed" id="instagram">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Follow Us</span>
+          <h2>Our Latest Work on Instagram</h2>
+          <p>Real installations, behind‑the‑scenes, and client projects – all shared in real time.</p>
+        </div>
+
+        <div class="grid reveal">
+          <!-- Each item corresponds to a post from your Instagram screenshot -->
+          <div class="grid-item">
+            <img src="images/video.jpg" alt="VIDEO">
+            <span class="caption">VIDEO</span>
+          </div>
+          <div class="grid-item">
+            <img src="images/ercom.jpg" alt="ERCOM">
+            <span class="caption">ERCOM</span>
+          </div>
+          <div class="grid-item">
+            <img src="images/palm.jpg" alt="PALM">
+            <span class="caption">PALM</span>
+          </div>
+          <div class="grid-item">
+            <img src="images/lock.jpg" alt="LOCK">
+            <span class="caption">LOCK</span>
+          </div>
+          <div class="grid-item">
+            <img src="images/welcome.jpg" alt="Welcome">
+            <span class="caption">Welcome</span>
+          </div>
+          <div class="grid-item">
+            <img src="images/dual-lens-car-camera.jpg" alt="Dual Lens Car Camera">
+            <span class="caption">Dual Lens Car Camera</span>
+          </div>
+          <div class="grid-item">
+            <img src="images/built-in-radar.jpg" alt="Built-in Radar">
+            <span class="caption">Built‑in Radar</span>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="https://instagram.com/ryanshawsecuresolutions" target="_blank" rel="noopener noreferrer" class="btn btn-primary follow-btn">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            Follow @ryanshawsecuresolutions
+          </a>
         </div>
       </div>
     </section>
@@ -741,13 +834,13 @@
             <span class="eyebrow">Meet the Team</span>
             <div class="team-grid">
               <div class="team-card">
-                <div class="avatar">CK</div>
+                <div class="avatar"><img src="images/team-catherine.jpg" alt="Catherine Kaweso"></div>
                 <h4>Catherine Kaweso</h4>
                 <div class="role">Director</div>
                 <p>Over 10 years of experience in security systems integration and network infrastructure. Managing Director of Rikel Technologies.</p>
               </div>
               <div class="team-card">
-                <div class="avatar">MK</div>
+                <div class="avatar"><img src="images/team-moses.jpg" alt="Moses Kyalo Maingi"></div>
                 <h4>Moses Kyalo Maingi</h4>
                 <div class="role">Lead ICT Technician</div>
                 <p>10+ years in structured cabling, CCTV, access control, and WiFi deployment. Certified in Ubiquiti NanoStation and biometric systems.</p>
@@ -841,6 +934,7 @@
           <a href="#services">Services</a>
           <a href="#plans">Monitoring Plans</a>
           <a href="#about">About</a>
+          <a href="#instagram">Instagram</a>
           <a href="#contact">Contact</a>
         </div>
         <div class="foot-col">
@@ -882,4 +976,4 @@
   </script>
 
 </body>
-</html>
+</html>    
